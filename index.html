@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Valentine's Day 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background:
+        radial-gradient(circle at top, rgba(255,255,255,0.4), transparent 60%),
+        linear-gradient(135deg, #ff9a9e, #fbc2eb, #fad0c4);
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+/* Floating hearts */
+.heart-float {
+    position: fixed;
+    bottom: -20px;
+    animation: floatUp 9s linear infinite;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0; }
+    20% { opacity: 0.5; }
+    100% { transform: translateY(-120vh); opacity: 0; }
+}
+
+/* Card */
+.card {
+    background: white;
+    width: 880px;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+    text-align: center;
+    animation: fadeIn 1.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 { color: #e63946; }
+.heart { font-size: 30px; }
+
+/* Poem */
+.poem {
+    max-width: 520px;
+    margin: 0 auto 30px;
+    text-align: left;
+}
+
+.line {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.8;
+}
+
+.line span {
+    color: #e63946;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Buttons */
+button {
+    background: #e63946;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover { background: #d62828; }
+
+.next-step-btn {
+    background: #ff6b81;
+    display: none;
+}
+
+/* Media */
+.media {
+    margin-top: 35px;
+    display: none;
+    animation: fadeIn 1.2s ease;
+}
+
+.top-row, .bottom-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+}
+
+.bottom-row { margin-top: 32px; }
+
+/* Photos */
+.photo {
+    width: 230px;
+    border-radius: 18px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.photo.small { width: 200px; }
+
+.photo:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 25px rgba(230,57,70,0.35);
+}
+
+/* Videos */
+video {
+    width: 220px;
+    border-radius: 18px;
+}
+
+/* Reveal */
+.reveal {
+    margin-top: 35px;
+    font-size: 16px;
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+.reveal.show { opacity: 1; }
+
+.footer {
+    margin-top: 20px;
+    color: #e63946;
+    font-size: 14px;
+}
+
+/* Popup */
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 25px;
+    width: 420px;
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
+
+.popup-text {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.9;
+    font-style: italic;
+    white-space: pre-line;
+}
+
+.popup video {
+    width: 100%;
+    max-height: 70vh;
+    border-radius: 20px;
+    margin-top: 25px;
+    opacity: 0;
+    transform: scale(0.96);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+for (let i = 0; i < 16; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart-float";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDelay = Math.random() * 9 + "s";
+    heart.style.fontSize = (14 + Math.random() * 12) + "px";
+    document.body.appendChild(heart);
+}
+</script>
+
+<div class="card">
+<h1>Happy Valentine's Day</h1>
+<div class="heart">❤️</div>
+
+<div class="poem">
+    <div class="line"><span>A</span>twist of fate wrote us softly — unplanned, yet meant to stay,</div>
+    <div class="line"><span>D</span>ays born in classrooms, nights in texts that chased the boredom away.</div>
+    <div class="line"><span>H</span>er kajal eyes, a Kerala dawn, where storms and calm both sway,</div>
+    <div class="line"><span>Y</span>et through the weight of dreams and pain, my peace chose her each day,</div>
+    <div class="line"><span>A</span>nd if our story paused once more, my heart still whispers replay.</div>
+</div>
+
+<button onclick="showLove()">Click if you're curious 💌</button>
+
+<div class="media" id="media">
+    <div class="top-row">
+        <img src="photo1.jpg" class="photo">
+        <img src="photo3.jpg" class="photo small">
+        <video src="video2.mp4" autoplay loop muted></video>
+    </div>
+
+    <div class="bottom-row">
+        <video src="video3.mp4" autoplay loop muted></video>
+        <img src="photo2.jpg" class="photo">
+        <img src="photo4.jpg" class="photo">
+    </div>
+
+    <audio id="song" src="song.mp3"></audio>
+</div>
+
+<button class="next-step-btn" id="nextBtn" onclick="openHeart()">
+click here for another step into my heart 💗
+</button>
+
+<div class="reveal" id="reveal">
+“If this made you smile… I was hoping it would.”
+</div>
+
+<div class="footer">Some moments feel special… simply because they include you 🤍</div>
+<div class="footer">yours true admirer HARSHA YADAV.</div>
+</div>
+
+<!-- Popup -->
+<div class="popup-overlay" id="popup">
+<div class="popup">
+<div class="popup-text">
+i wont say i will never make you cry,
+but i will make you smile before yours tears get dry.
+</div>
+<video id="finalVideo" src="lastvideo.mp4" controls></video>
+</div>
+</div>
+
+<script>
+function showLove() {
+    document.getElementById("media").style.display = "block";
+    document.getElementById("song").play();
+
+    setTimeout(() => {
+        document.getElementById("reveal").classList.add("show");
+        document.getElementById("nextBtn").style.display = "inline-block";
+    }, 1500);
+}
+
+function openHeart() {
+    const popup = document.getElementById("popup");
+    const video = document.getElementById("finalVideo");
+    const song = document.getElementById("song");
+
+    // reset state so it works every time
+    popup.style.display = "flex";
+    video.pause();
+    video.currentTime = 0;
+    video.style.opacity = 0;
+    video.style.transform = "scale(0.96)";
+    video.volume = 0;
+
+    setTimeout(() => {
+        fadeOutAudio(song, 2500);
+        video.style.display = "block";
+        video.play();
+
+        setTimeout(() => {
+            video.style.opacity = 1;
+            video.style.transform = "scale(1)";
+            fadeInAudio(video, 2500);
+        }, 300);
+    }, 4500);
+
+    video.onended = () => {
+        fadeOutAudio(video, 1500);
+
+        song.volume = 0;
+        song.play();
+        fadeInAudio(song, 2500);
+
+        // ⏳ give time, then auto-close popup
+        setTimeout(() => {
+            popup.style.display = "none";
+        }, 3000); // enough time to breathe
+    };
+}
+
+/* Audio helpers */
+function fadeOutAudio(audio, duration) {
+    let step = audio.volume / (duration / 50);
+    const fade = setInterval(() => {
+        if (audio.volume > step) {
+            audio.volume -= step;
+        } else {
+            audio.volume = 0;
+            audio.pause();
+            clearInterval(fade);
+        }
+    }, 50);
+}
+
+function fadeInAudio(audio, duration) {
+    audio.volume = 0;
+    let step = 1 / (duration / 50);
+    const fade = setInterval(() => {
+        if (audio.volume < 1 - step) {
+            audio.volume += step;
+        } else {
+            audio.volume = 1;
+            clearInterval(fade);
+        }
+    }, 50);
+}
+</script>
+
+</body>
+</html>
